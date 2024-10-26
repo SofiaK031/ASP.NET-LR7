@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Download file";
+    string? warning = ViewData["WarningMessage"] as string;
+    string firstNameValue = ViewData["FirstName"] as string ?? string.Empty;
+    string lastNameValue = ViewData["LastName"] as string ?? string.Empty;
+    string fileNameValue = ViewData["FileName"] as string ?? string.Empty;
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/downloadFile.css" />
+</head>
+
+
+<div class="my-container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h3 class="display-4 mb-4">Download file</h3>
+            <form method="get" class="border p-4 shadow-sm rounded">
+                <div class="form-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your first name" value="@firstNameValue">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Second name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your last name" value="@lastNameValue">
+                </div>
+                <div class="form-group">
+                    <label for="fileName">File name</label>
+                    <input type="text" class="form-control" id="fileName" name="fileName" placeholder="File name" value="@fileNameValue">
+                </div>
+
+                <br />
+
+                @if (!string.IsNullOrEmpty(warning))
+                {
+                    <div class="alert alert-warning" role="alert">
+                        <h6 style="margin: 0px;">@warning</h6>
+                    </div>
+                }
+
+                <button type="submit" class="btn w-50">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
